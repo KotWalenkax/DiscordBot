@@ -1,6 +1,6 @@
 package Connection;
 
-import Model.Example;
+import Model.Game;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -8,6 +8,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Arrays;
 
 public class Conn {
 
@@ -27,8 +28,8 @@ public class Conn {
 
     private Conn(){}
 
-    public Example getMethod(String url) {
-        Example example = null;
+    public Game getMethod(String url) {
+        Game game = null;
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .GET()
@@ -42,11 +43,34 @@ public class Conn {
                 ioException.printStackTrace();
             }
             assert response != null;
-            example = new Gson().fromJson(response.body(), Example.class);
+            game = new Gson().fromJson(response.body(), Game.class);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return example;
+        return game;
+    }
+
+    public Game[] findGame(String url) {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .GET()
+                .build();
+
+        try {
+            HttpResponse<String> response = null;
+            try {
+                response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            } catch (IOException | InterruptedException ioException) {
+                ioException.printStackTrace();
+            }
+            assert response != null;
+            Game[] gameList = new Gson().fromJson(response.body(), Game[].class);
+            return gameList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

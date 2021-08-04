@@ -3,7 +3,8 @@ package Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Example {
+public class Game {
+
 
     @SerializedName("id")
     @Expose
@@ -17,6 +18,9 @@ public class Example {
     @SerializedName("thumbnail")
     @Expose
     private String thumbnail;
+    @SerializedName("image")
+    @Expose
+    private String image;
     @SerializedName("description")
     @Expose
     private String description;
@@ -26,6 +30,9 @@ public class Example {
     @SerializedName("open_giveaway_url")
     @Expose
     private String openGiveawayUrl;
+    @SerializedName("published_date")
+    @Expose
+    private String publishedDate;
     @SerializedName("type")
     @Expose
     private String type;
@@ -44,6 +51,9 @@ public class Example {
     @SerializedName("gamerpower_url")
     @Expose
     private String gamerpowerUrl;
+    @SerializedName("open_giveaway")
+    @Expose
+    private String openGiveaway;
 
     public Integer getId() {
         return id;
@@ -77,6 +87,14 @@ public class Example {
         this.thumbnail = thumbnail;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -99,6 +117,14 @@ public class Example {
 
     public void setOpenGiveawayUrl(String openGiveawayUrl) {
         this.openGiveawayUrl = openGiveawayUrl;
+    }
+
+    public String getPublishedDate() {
+        return publishedDate;
+    }
+
+    public void setPublishedDate(String publishedDate) {
+        this.publishedDate = publishedDate;
     }
 
     public String getType() {
@@ -147,6 +173,14 @@ public class Example {
 
     public void setGamerpowerUrl(String gamerpowerUrl) {
         this.gamerpowerUrl = gamerpowerUrl;
+    }
+
+    public String getOpenGiveaway() {
+        return openGiveaway;
+    }
+
+    public void setOpenGiveaway(String openGiveaway) {
+        this.openGiveaway = openGiveaway;
     }
 
 }
